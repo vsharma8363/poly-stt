@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "poly-stt"
+version = "0.1.0"
+description = "Streaming speech-to-text for the poly- ecosystem"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["speech-to-text", "stt", "whisper", "audio", "ai", "transcription"]
+
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+whisper = [
+    "transformers>=4.36",
+    "torch>=2.1",
+    "accelerate>=0.25",
+]
+all = ["poly-stt[whisper]"]
+dev = [
+    "pytest>=7",
+    "sounddevice>=0.4",
+    "soundfile>=0.12",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["poly_stt"]
